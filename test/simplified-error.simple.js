@@ -19,12 +19,12 @@
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-if (!process.addAsyncListener) require('../index.js');
+var glue = require('../index.js');
 
 var assert = require('assert');
 var fs = require('fs');
-var addListener = process.addAsyncListener;
-var removeListener = process.removeAsyncListener;
+var addListener = glue.addAsyncListener;
+var removeListener = glue.removeAsyncListener;
 
 var caught = 0;
 var expectCaught = 0;
@@ -50,7 +50,7 @@ process.on('exit', function() {
   console.log('ok');
 });
 
-var listener = process.createAsyncListener(callbacksObj);
+var listener = glue.createAsyncListener(callbacksObj);
 
 // Nested FS
 process.nextTick(function() {

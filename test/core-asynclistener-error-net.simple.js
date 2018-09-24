@@ -21,7 +21,7 @@
 
 var PORT = 12346;
 
-if (!process.addAsyncListener) require('../index.js');
+var glue = require('../index.js');
 
 var assert = require('assert');
 var dns = require('dns');
@@ -48,10 +48,10 @@ var callbacksObj = {
   }
 };
 
-var listener = process.addAsyncListener(callbacksObj);
+var listener = glue.addAsyncListener(callbacksObj);
 
 process.on('exit', function(code) {
-  process.removeAsyncListener(listener);
+  glue.removeAsyncListener(listener);
 
   if (code > 0)
     return;

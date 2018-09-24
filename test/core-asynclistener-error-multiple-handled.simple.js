@@ -20,7 +20,7 @@
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-if (!process.addAsyncListener) require('../index.js');
+var glue = require('../index.js');
 if (!global.setImmediate) global.setImmediate = setTimeout;
 
 var assert = require('assert');
@@ -52,16 +52,16 @@ var asyncNoHandleError1 = {
 };
 
 var listeners = [
-  process.addAsyncListener(asyncNoHandleError0),
-  process.addAsyncListener(asyncNoHandleError1)
+  glue.addAsyncListener(asyncNoHandleError0),
+  glue.addAsyncListener(asyncNoHandleError1)
 ];
 
 process.nextTick(function() {
   throw new Error();
 });
 
-process.removeAsyncListener(listeners[0]);
-process.removeAsyncListener(listeners[1]);
+glue.removeAsyncListener(listeners[0]);
+glue.removeAsyncListener(listeners[1]);
 
 process.on('exit', function(code) {
   // If the exit code isn't ok then return early to throw the stack that

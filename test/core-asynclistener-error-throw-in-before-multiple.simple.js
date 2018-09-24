@@ -20,7 +20,7 @@
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-if (!process.addAsyncListener) require('../index.js');
+var glue = require('../index.js');
 if (!global.setImmediate) global.setImmediate = setTimeout;
 
 var assert = require('assert');
@@ -58,8 +58,8 @@ var handlers1 = {
 };
 
 var keys = [
-  process.addAsyncListener(onAsync0, handlers),
-  process.addAsyncListener(onAsync1, handlers1)
+  glue.addAsyncListener(onAsync0, handlers),
+  glue.addAsyncListener(onAsync1, handlers1)
 ];
 
 process.on('uncaughtException', function () {
@@ -74,6 +74,6 @@ setImmediate(function () {
 });
 
 keys.forEach(function (key) {
-  process.removeAsyncListener(key);
+  glue.removeAsyncListener(key);
 });
 

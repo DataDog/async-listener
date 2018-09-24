@@ -5,7 +5,7 @@ if (!global.setImmediate) global.setImmediate = setTimeout;
 test("asyncListeners work as expected with process.nextTick", function (t) {
   t.plan(1);
 
-  if (!process.addAsyncListener) require('../index.js');
+  var glue = require('../index.js');
 
   console.log('+');
   // comment out this line to get the expected result:
@@ -13,7 +13,7 @@ test("asyncListeners work as expected with process.nextTick", function (t) {
 
   var counter = 1;
   var current;
-  process.addAsyncListener(
+  glue.addAsyncListener(
     {
       create : function listener() { return counter++; },
       before : function (_, domain) { current = domain; },
@@ -23,6 +23,6 @@ test("asyncListeners work as expected with process.nextTick", function (t) {
 
   setImmediate(function () { t.equal(current, 1); });
   // uncomment this line to get the expected result:
-  // process.removeAsyncListener(id);
+  // glue.removeAsyncListener(id);
 });
 

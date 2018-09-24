@@ -3,13 +3,13 @@ var test = require('tap').test;
 test("asyncListeners work as expected with process.nextTick", function (t) {
   t.plan(4);
 
-  if (!process.addAsyncListener) require('../index.js');
+  var glue = require('../index.js');
 
   var active
     , cntr   = 0
     ;
 
-  process.addAsyncListener(
+  glue.addAsyncListener(
     {
       create : function () { return { val : ++cntr }; },
       before : function (context, data) { active = data.val; },

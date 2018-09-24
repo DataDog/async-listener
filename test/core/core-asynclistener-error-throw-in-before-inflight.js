@@ -20,7 +20,7 @@
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-if (!process.addAsyncListener) require('../../index.js');
+var glue = require('../../index.js');
 
 var assert = require('assert');
 
@@ -43,7 +43,7 @@ var handlers1 = {
   }
 }
 
-var key0 = process.addAsyncListener(onAsync0, handlers0);
+var key0 = glue.addAsyncListener(onAsync0, handlers0);
 
 process.on('uncaughtException', function (err) {
   // handlers0 error handler must be called once only
@@ -55,5 +55,5 @@ setImmediate(function () {
   throw 1;
 });
 
-process.addAsyncListener(onAsync1, handlers1);
-process.removeAsyncListener(key0);
+glue.addAsyncListener(onAsync1, handlers1);
+glue.removeAsyncListener(key0);

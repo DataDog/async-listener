@@ -1,4 +1,4 @@
-if (!process.addAsyncListener) require('../index.js');
+var glue = require('../index.js');
 
 var extend = require('util')._extend;
 var test = require('tap').test;
@@ -85,7 +85,7 @@ test('http.Agent socket reuse works', function(t){
       setImmediate(ping, i);
     }
 
-    process.removeAsyncListener(listener.listener);
+    glue.removeAsyncListener(listener.listener);
 
     //
     // NOTE: This expected structure building stuff is really complicated
@@ -259,7 +259,7 @@ test('http.Agent socket reuse works', function(t){
 });
 
 function addListner() {
-  var listener = process.addAsyncListener({
+  var listener = glue.addAsyncListener({
     create: create,
     before: before,
     after: after,
