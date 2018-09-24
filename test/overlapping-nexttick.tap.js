@@ -14,7 +14,7 @@ if (!global.setImmediate) global.setImmediate = setTimeout;
  *
  *
  */
-if (!process.addAsyncListener) require('../index.js');
+var glue = require('../index.js');
 
 /*
  * CLS code
@@ -93,7 +93,7 @@ function create(name) {
   assert.ok(name, "namespace must be given a name!");
 
   var namespace = new Namespace(name);
-  namespace.id = process.addAsyncListener(
+  namespace.id = glue.addAsyncListener(
     {
       create : function () { return namespace.active; },
       before : function (context, domain) { namespace.enter(domain); },

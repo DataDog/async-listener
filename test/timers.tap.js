@@ -1,4 +1,4 @@
-if (!process.addAsyncListener) require('../index.js');
+var glue = require('../index.js');
 
 var test = require('tap').test;
 var net = require('net');
@@ -106,11 +106,11 @@ function test_helper (t, run, expect) {
 
   var listener = addListner();
   run(listener, function () { done = true; });
-  process.removeAsyncListener(listener.listener);
+  glue.removeAsyncListener(listener.listener);
 }
 
 function addListner() {
-  var listener = process.addAsyncListener({
+  var listener = glue.addAsyncListener({
     create: create,
     before: before,
     after: after,

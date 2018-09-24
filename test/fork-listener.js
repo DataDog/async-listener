@@ -2,7 +2,7 @@
 
 var domain = require('domain');
 
-if (!process.addAsyncListener) require('../index.js');
+var glue = require('../index.js');
 
 var d = domain.create();
 d.on('error', function (error) {

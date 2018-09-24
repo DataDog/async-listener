@@ -1,4 +1,4 @@
-if (!process.addAsyncListener) require('../index.js');
+var glue = require('../index.js');
 
 var test = require('tap').test;
 var net = require('net');

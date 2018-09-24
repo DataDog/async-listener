@@ -20,7 +20,7 @@
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-if (!process.addAsyncListener) require('../index.js');
+var glue = require('../index.js');
 
 var assert = require('assert');
 
@@ -47,8 +47,8 @@ var asyncNoHandleError1 = {
 };
 
 var listeners = [
-  process.addAsyncListener(asyncNoHandleError0),
-  process.addAsyncListener(asyncNoHandleError1)
+  glue.addAsyncListener(asyncNoHandleError0),
+  glue.addAsyncListener(asyncNoHandleError1)
 ];
 
 var uncaughtFired = false;
@@ -73,7 +73,7 @@ process.on('exit', function(code) {
 
   // Need to remove the async listeners or tests will always pass
   for (var i = 0; i < listeners.length; i++)
-    process.removeAsyncListener(listeners[i]);
+    glue.removeAsyncListener(listeners[i]);
 
   assert.ok(uncaughtFired);
   console.log('ok');

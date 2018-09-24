@@ -20,7 +20,7 @@
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-if (!process.addAsyncListener) require('../index.js');
+var glue = require('../index.js');
 if (!global.setImmediate) global.setImmediate = setTimeout;
 
 var assert = require('assert');
@@ -37,13 +37,13 @@ var asyncNoHandleError = {
   }
 };
 
-var key = process.addAsyncListener(onAsync0, asyncNoHandleError);
+var key = glue.addAsyncListener(onAsync0, asyncNoHandleError);
 
 setImmediate(function () {
   return 1;
 });
 
-process.removeAsyncListener(key);
+glue.removeAsyncListener(key);
 process.on('exit', function () {
   // calling removeAsyncListener *after* a callback is scheduled
   // should not affect the handler from responding to the callback

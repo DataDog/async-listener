@@ -4,7 +4,7 @@ var test   = require('tap').test
 
 if (!global.setImmediate) global.setImmediate = setTimeout;
 
-if (!process.addAsyncListener) require('../index.js');
+var glue = require('../index.js');
 
 var childProcess = require('child_process')
   , exec         = childProcess.exec
@@ -22,7 +22,7 @@ test('ChildProcess', function (t) {
       , cntr   = 0
       ;
 
-    process.addAsyncListener(
+    glue.addAsyncListener(
       {
         create : function () { return { val : ++cntr }; },
         before : function (context, data) { active = data.val; },
@@ -50,7 +50,7 @@ test('ChildProcess', function (t) {
       , cntr   = 0
       ;
 
-    process.addAsyncListener(
+    glue.addAsyncListener(
       {
         create : function () { return { val : ++cntr }; },
         before : function (context, data) { active = data.val; },
@@ -77,7 +77,7 @@ test('ChildProcess', function (t) {
       , cntr   = 0
       ;
 
-    process.addAsyncListener(
+    glue.addAsyncListener(
       {
         create : function () { return { val : ++cntr }; },
         before : function (context, data) { active = data.val; },

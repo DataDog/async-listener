@@ -20,7 +20,7 @@
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-if (!process.addAsyncListener) require('../index.js');
+var glue = require('../index.js');
 if (!global.setImmediate) global.setImmediate = setTimeout;
 
 var assert  = require('assert');
@@ -57,7 +57,7 @@ if (cluster.isMaster) {
     }
   };
 
-  var key = process.addAsyncListener(onAsync0, handlers);
+  var key = glue.addAsyncListener(onAsync0, handlers);
 
   process.on('unhandledException', function () {
     // throwing in 'error' should bypass unhandledException
@@ -68,5 +68,5 @@ if (cluster.isMaster) {
     throw new Error('setImmediate');
   });
 
-  process.removeAsyncListener(key);
+  glue.removeAsyncListener(key);
 }

@@ -5,9 +5,9 @@ if (!global.setImmediate) global.setImmediate = setTimeout;
 test("after handler not run on throw", function (t) {
   t.plan(2);
 
-  if (!process.addAsyncListener) require('../index.js');
+  var glue = require('../index.js');
 
-  var key = process.createAsyncListener(
+  var key = glue.createAsyncListener(
     {
       create : function () { return {}; },
       after  : function asyncAfter() { t.fail("after was called"); },
@@ -15,14 +15,14 @@ test("after handler not run on throw", function (t) {
     }
   );
 
-  process.addAsyncListener(key);
+  glue.addAsyncListener(key);
 
   setImmediate(function () {
     throw new Error('whoops');
   });
 
   function handler(err) {
-    process.removeAsyncListener(key);
+    glue.removeAsyncListener(key);
     process.removeListener('uncaughtException', handler);
     t.ok(err, "error was propagated");
   }

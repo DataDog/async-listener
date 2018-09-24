@@ -20,7 +20,7 @@
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-if (!process.addAsyncListener) require('../index.js');
+var glue = require('../index.js');
 
 var assert = require('assert');
 var net = require('net');
@@ -45,7 +45,7 @@ function onAsync() {
 }
 
 
-process.addAsyncListener(onAsync);
+glue.addAsyncListener(onAsync);
 
 
 // Test listeners side-by-side

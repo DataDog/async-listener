@@ -2,7 +2,7 @@
 
 var net = require('net');
 var test = require('tap').test;
-if (!process.addAsyncListener) require('../index.js');
+var glue = require('../index.js');
 
 var PORT = 12346;
 

@@ -21,15 +21,15 @@
 
 var PORT = 12346;
 
-if (!process.addAsyncListener) require('../index.js');
+var glue = require('../index.js');
 if (!global.setImmediate) global.setImmediate = setTimeout;
 
 var assert = require('assert');
 var dns = require('dns');
 var fs = require('fs');
 var net = require('net');
-var addListener = process.addAsyncListener;
-var removeListener = process.removeAsyncListener;
+var addListener = glue.addAsyncListener;
+var removeListener = glue.removeAsyncListener;
 
 var caught = 0;
 var expectCaught = 0;
@@ -74,7 +74,7 @@ process.on('exit', function() {
   console.log('ok');
 });
 
-var listener = process.createAsyncListener(asyncL, callbacksObj);
+var listener = glue.createAsyncListener(asyncL, callbacksObj);
 
 
 // Catch synchronous throws

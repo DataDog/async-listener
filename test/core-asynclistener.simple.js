@@ -21,7 +21,7 @@
 
 var PORT = 12346;
 
-if (!process.addAsyncListener) require('../index.js');
+var glue = require('../index.js');
 if (!global.setImmediate) global.setImmediate = setTimeout;
 
 var assert = require('assert');
@@ -29,8 +29,8 @@ var net = require('net');
 var fs = require('fs');
 var dgram = require('dgram');
 
-var addListener = process.addAsyncListener;
-var removeListener = process.removeAsyncListener;
+var addListener = glue.addAsyncListener;
+var removeListener = glue.removeAsyncListener;
 var actualAsync = 0;
 var expectAsync = 0;
 
@@ -40,7 +40,7 @@ var callbacks = {
   }
 };
 
-var listener = process.createAsyncListener(callbacks);
+var listener = glue.createAsyncListener(callbacks);
 
 process.on('exit', function() {
   console.log('expected', expectAsync);

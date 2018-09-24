@@ -6,7 +6,7 @@ test("asyncListener preserves function length", function (t) {
   var fsLengthsPre = computeValueLengths(require('fs'));
   var httpLengthsPre = computeValueLengths(require('http'));
 
-  if (!process.addAsyncListener) require('../index.js');
+  var glue = require('../index.js');
 
   var fsLengthsPost = computeValueLengths(require('fs'));
   var httpLengthsPost = computeValueLengths(require('http'));

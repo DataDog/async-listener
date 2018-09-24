@@ -481,8 +481,9 @@ function removeAsyncListener(listener) {
   }
 }
 
-process.createAsyncListener = createAsyncListener;
-process.addAsyncListener    = addAsyncListener;
-process.removeAsyncListener = removeAsyncListener;
-
-module.exports = wrapCallback;
+module.exports = {
+  createAsyncListener,
+  addAsyncListener,
+  removeAsyncListener,
+  wrapCallback
+};

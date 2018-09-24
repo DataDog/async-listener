@@ -2,7 +2,7 @@
 
 var assert = require('assert');
 
-if (!process.addAsyncListener) require('../index.js');
+var glue = require('../index.js');
 
 function MiniCLS() {
   this.active = Object.create(null);
@@ -47,7 +47,7 @@ MiniCLS.prototype.run = function (fn) {
 };
 
 var cls = new MiniCLS();
-process.addAsyncListener(
+glue.addAsyncListener(
   {
     create : function () { return cls.active; },
     before : function (context, domain) { cls.enter(domain); },
