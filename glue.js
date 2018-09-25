@@ -482,8 +482,8 @@ function removeAsyncListener(listener) {
 }
 
 module.exports = {
-  createAsyncListener,
-  addAsyncListener,
-  removeAsyncListener,
-  wrapCallback
+  createAsyncListener: createAsyncListener,
+  addAsyncListener: addAsyncListener,
+  removeAsyncListener: removeAsyncListener,
+  wrapCallback: wrapCallback
 };
