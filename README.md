@@ -2,6 +2,19 @@
 
 [![Build status](https://travis-ci.org/othiym23/async-listener.svg?branch=master)](https://travis-ci.org/othiym23/async-listener)
 
+*This fork of [async-listener](https://github.com/othiym23/async-listener) makes
+the following changes:*
+
+* *For promises, `.then()` callbacks are bound to the context in which `.then()`
+was called instead of the context in which `resolve()` was called.*
+* *The API below is exported by the library instead of being attached directly
+to `process`. This avoids conflicts with the existing implementation. However,
+it means this fork cannot be used as a polyfill.*
+* *async/await is fully supported.*
+
+*Since this means it works differently from the original, the goal of this fork
+is to be used on its own, and not to be merged back upstream.*
+
 # process.addAsyncListener polyfill
 
 This is an implementation of Trevor Norris's
