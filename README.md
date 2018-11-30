@@ -10,7 +10,6 @@ was called instead of the context in which `resolve()` was called.*
 * *The API below is exported by the library instead of being attached directly
 to `process`. This avoids conflicts with the existing implementation. However,
 it means this fork cannot be used as a polyfill.*
-* *async/await is fully supported.*
 
 *Since this means it works differently from the original, the goal of this fork
 is to be used on its own, and not to be merged back upstream.*
