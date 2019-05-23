@@ -1,5 +1,5 @@
 {
-  "name": "async-listener",
+  "name": "@datadog/async-listener",
   "version": "0.6.10",
   "description": "Polyfill exporting trevnorris's 0.11+ asyncListener API.",
   "author": "Forrest L Norvell <ogd@aoaioxxysz.net>",
