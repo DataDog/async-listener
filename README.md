@@ -1,6 +1,6 @@
-[![NPM](https://nodei.co/npm/async-listener.png?downloads=true&stars=true)](https://nodei.co/npm/async-listener/)
+[![NPM](https://nodei.co/npm/@datadog/async-listener.png?downloads=true&stars=true)](https://nodei.co/npm/@datadog/async-listener/)
 
-[![Build status](https://travis-ci.org/othiym23/async-listener.svg?branch=master)](https://travis-ci.org/othiym23/async-listener)
+[![Build status](https://travis-ci.org/DataDog/async-listener.svg?branch=datadog)](https://travis-ci.org/DataDog/async-listener)
 
 *This fork of [async-listener](https://github.com/othiym23/async-listener) makes
 the following changes:*
@@ -10,9 +10,6 @@ was called instead of the context in which `resolve()` was called.*
 * *The API below is exported by the library instead of being attached directly
 to `process`. This avoids conflicts with the existing implementation. However,
 it means this fork cannot be used as a polyfill.*
-
-*Since this means it works differently from the original, the goal of this fork
-is to be used on its own, and not to be merged back upstream.*
 
 # process.addAsyncListener polyfill
 
